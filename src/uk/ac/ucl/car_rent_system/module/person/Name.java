@@ -1,17 +1,27 @@
-package uk.ac.ucl.car_rent_system.module;
+package uk.ac.ucl.car_rent_system.module.person;
 
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Person {
-	
+public final class Name {
 	private String firstName;
 	
 	private String lastName;
 	
-	private Date age;
+	private static final Map<String, Name> NAMES = new HashMap<>();
+
+	public Name(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 	
-	public String getName(){
-		return this.getFirstName()+" "+this.getLastName();
+	public static Name getInstance(String firstName, String lastName){
+		final String k = firstName+lastName;
+		
+		if(!NAMES.containsKey(k)){
+			NAMES.put(k, new Name(firstName,lastName));
+		}
+		return NAMES.get(k);
 	}
 
 	public String getFirstName() {
@@ -30,19 +40,15 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public Date getAge() {
-		return age;
-	}
-
-	public void setAge(Date age) {
-		this.age = age;
+	@Override
+	public String toString() {
+		return firstName + " " + lastName;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((age == null) ? 0 : age.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		return result;
@@ -56,12 +62,7 @@ public class Person {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
-		if (age == null) {
-			if (other.age != null)
-				return false;
-		} else if (!age.equals(other.age))
-			return false;
+		Name other = (Name) obj;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
@@ -74,4 +75,9 @@ public class Person {
 			return false;
 		return true;
 	}
+	
+	
+	
+	
+	
 }
