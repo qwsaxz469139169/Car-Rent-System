@@ -15,6 +15,12 @@ public final class Name {
 		this.lastName = lastName;
 	}
 	
+    /***
+     * get a new name or existing instance of the name
+     * @param String Object with firstName first name to be added
+     * @param String Object withlastName last name to be added
+     * @return Name Object with a new name or existing instance
+     */
 	public static Name getInstance(String firstName, String lastName){
 		final String k = firstName+lastName;
 		
@@ -23,19 +29,35 @@ public final class Name {
 		}
 		return NAMES.get(k);
 	}
-
+	
+    /***
+     * get the first name of the person
+     * @return String Object with the first name of the person
+     */
 	public String getFirstName() {
 		return firstName;
 	}
-
+	
+    /***
+     * Set the first name of the person for the current object
+     * @param String Object with first name to be added
+     */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+    /***
+     * get the last name of the person
+     * @return String Object with the last name of the person
+     */
 	public String getLastName() {
 		return lastName;
 	}
-
+	
+    /***
+     * Set the last name of the person for the current object
+     * @param String Object with last name to be added
+     */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}

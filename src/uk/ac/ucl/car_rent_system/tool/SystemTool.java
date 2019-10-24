@@ -49,4 +49,12 @@ public class SystemTool {
 		Calendar calendar= Calendar.getInstance();
 		return calendar.getTime();
 	}
+	
+	public static boolean isEmpty(String str){
+		if(str.equals("")||str==null||str==""){
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

@@ -8,6 +8,9 @@ public class LargeCar extends AbstractCar {
 		Initialize();
 	}
 	
+    /***
+     * Initialize some properties a large car need
+     */
 	private void Initialize() {
 		RegistrationNum registrationNum = createRegistrationNum();	
 		this.setRegistrationNum(registrationNum);	
@@ -15,7 +18,10 @@ public class LargeCar extends AbstractCar {
 		this.setCarType("large");
 	}
 
-	@Override
+	/***
+     * create a new registration number of large car
+     * @return  RegistrationNum Object: a new registration number of large car
+     */
 	public RegistrationNum createRegistrationNum() {
 		String firstComponent = "LC"+SystemTool.getRandomNum();
 		String secondComponent = SystemTool.getRandomLetter();
@@ -25,7 +31,11 @@ public class LargeCar extends AbstractCar {
 		return rn;
 	}
 
-	@Override
+	/***
+     * drive the large car for a given number of whole Kilometres that returns the number of whole Litres of fuel consumed during the journey
+     * @param int Object: a given number of whole Kilometres
+     * @return int Object:  the number of whole Litres of fuel consumed during the journey
+     */
 	public int driveCar(int kilometer) {
 
 		if (kilometer <= 0 && !this.isRent() && this.getFuel() <= 0) {

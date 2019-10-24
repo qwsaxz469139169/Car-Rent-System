@@ -13,55 +13,73 @@ public class Person{
 	
 	private Car car;
 	
-	private boolean canRent;
-	
-	private DrivingLicence drivingLicence;
+	private DrivingLicense drivingLicense;
 	
 	public Person(Name name, Date birth) {
 		this.name = name;
 		this.birth = birth;
 	}
 
+    /***
+     * Function to get the full name of a Person
+     * @return Returns Name Object
+     */
 	public Name getName() {
 		return name;
 	}
 
-	public void setName(Name name) {
-		this.name = name;
-	}
-
+    /***
+     * get the date of birth of the person
+     * @return Date Object with the date of birth of the person
+     */
 	public Date getBirth() {
 		return birth;
 	}
 
+    /***
+     * Set the birth date of the person for the current object
+     * @param Date Object with the date of birth of the person
+     */
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 	
+    /***
+     * get the car of the person rent
+     * @return Car Object with the car that person rent
+     */
 	public Car getCar() {
 		return car;
 	}
 
+    /***
+     * set the car of the person rent
+     * @param Car Object with the car that the person rent
+     */
 	public void setCar(Car car) {
 		this.car = car;
 	}
 
-	public boolean isCanRent() {
-		return canRent;
+    /***
+     * get the drivingl license of the person
+     * @return DrivingLicence Object 
+     */
+	public DrivingLicense getDrivingLicense() {
+		return drivingLicense;
 	}
 
-	public void setCanRent(boolean canRent) {
-		this.canRent = canRent;
-	}
-
-	public DrivingLicence getDrivingLicence() {
-		return drivingLicence;
-	}
-
-	public void setDrivingLicence(DrivingLicence drivingLicence) {
-		this.drivingLicence = drivingLicence;
+    /***
+     * set the driving licence of the person
+     * @param DrivingLicence Object
+     */
+	public void setDrivingLicense(DrivingLicense drivingLicense) {
+		this.drivingLicense = drivingLicense;
 	}
 	
+    /***
+     * get the age of the person
+     * @return int Object
+     */
 	public int getAge(){
 		return SystemTool.getYeartoNow(birth);		
 	}
@@ -99,8 +117,8 @@ public class Person{
 
 	@Override
 	public String toString() {
-		return "Person [name=" + name.toString() + ", birth=" + birth + ", car=" + car.toString() + ", canRent=" + canRent + ", drivingLicence="
-				+ drivingLicence.toString() + "]";
+		return "Person [name=" + name.toString() + ", birth=" + birth + ", car=" + car.toString() + ", drivingLicense="
+				+ drivingLicense.toString() + "]";
 	}
 	
 	
