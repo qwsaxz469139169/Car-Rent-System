@@ -16,6 +16,7 @@ public class SmallCar extends AbstractCar {
 		this.setRegistrationNum(registrationNum);	
 		this.setTankCapacity(49);
 		this.setCarType("small");
+		this.addFuel(49);
 	}
 
 	/***
@@ -38,7 +39,7 @@ public class SmallCar extends AbstractCar {
      */
 	public int driveCar(int kilometer) {
 		
-		if (kilometer <= 0 && !this.isRent() && this.getFuel() <= 0) {
+		if (kilometer <= 0 || !this.isRent() || this.getFuel() <= 0) {
 			throw new IllegalArgumentException("The car cannot drive.");
 		}
 
@@ -54,7 +55,7 @@ public class SmallCar extends AbstractCar {
 		fuel = fuel - consumeFule;
 		this.setFuel(fuel);
 
-		return fuel;
+		return consumeFule;
 	}
 		
 }

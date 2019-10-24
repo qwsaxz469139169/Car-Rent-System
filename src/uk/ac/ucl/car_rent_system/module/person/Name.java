@@ -3,6 +3,8 @@ package uk.ac.ucl.car_rent_system.module.person;
 import java.util.HashMap;
 import java.util.Map;
 
+import uk.ac.ucl.car_rent_system.tool.SystemTool;
+
 public final class Name {
 	private String firstName;
 	
@@ -22,6 +24,10 @@ public final class Name {
      * @return Name Object with a new name or existing instance
      */
 	public static Name getInstance(String firstName, String lastName){
+		if(SystemTool.isEmpty(firstName)||SystemTool.isEmpty(lastName)){
+			throw new IllegalArgumentException("Parameters are missing!");
+		}
+		
 		final String k = firstName+lastName;
 		
 		if(!NAMES.containsKey(k)){

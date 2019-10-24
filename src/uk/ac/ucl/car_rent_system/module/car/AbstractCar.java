@@ -17,7 +17,7 @@ public abstract class AbstractCar implements Car {
 	
 	private String carType;
 		
-    /***
+	/***
      * get type of the car
      * @return String Object
      */

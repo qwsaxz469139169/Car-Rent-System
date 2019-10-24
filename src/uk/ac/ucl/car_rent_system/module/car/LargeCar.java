@@ -16,6 +16,7 @@ public class LargeCar extends AbstractCar {
 		this.setRegistrationNum(registrationNum);	
 		this.setTankCapacity(60);
 		this.setCarType("large");
+		this.addFuel(60);
 	}
 
 	/***
@@ -37,8 +38,10 @@ public class LargeCar extends AbstractCar {
      * @return int Object:  the number of whole Litres of fuel consumed during the journey
      */
 	public int driveCar(int kilometer) {
+		boolean rent = this.isRent();
+		int fuel2 = this.getFuel();
 
-		if (kilometer <= 0 && !this.isRent() && this.getFuel() <= 0) {
+		if (kilometer <= 0 || !this.isRent() || this.getFuel() <= 0) {
 			throw new IllegalArgumentException("The car cannot drive.");
 		}
 
@@ -53,7 +56,7 @@ public class LargeCar extends AbstractCar {
 			}	
 			
 		} else if (kilometer > 50) {
-			consumeFule = 500 + (kilometer - 50) / 15;
+			consumeFule = 5 + (kilometer - 50) / 15;
 			
 			if ((kilometer - 50) % 15 > 0) {
 				consumeFule = consumeFule + 1;

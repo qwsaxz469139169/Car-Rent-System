@@ -2,7 +2,6 @@ package uk.ac.ucl.car_rent_system.carRental;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import uk.ac.ucl.car_rent_system.module.car.AbstractCar;
 import uk.ac.ucl.car_rent_system.module.car.Car;

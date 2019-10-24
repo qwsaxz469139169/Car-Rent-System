@@ -83,7 +83,7 @@ public class DrivingLicense {
 		finalComponent = SystemTool.getRandomNum();
 		
 	    drivingLicense = firstComponent + "-" + midComponent + "-" + finalComponent;
-
+        
 		return new DrivingLicense(holder, issueDate, isFullLicense);
 	}
 	
@@ -96,7 +96,7 @@ public class DrivingLicense {
      */
     public static DrivingLicense getInstance(Person holder, Date issueDate, boolean isFullLicense)
     {
-        if(holder == null||issueDate==null ){
+        if(holder == null||issueDate==null||!isFullLicense){
             throw new IllegalArgumentException("Parameters are missing!");
         }
 
