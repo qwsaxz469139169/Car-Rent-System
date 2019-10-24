@@ -1,20 +1,30 @@
 package uk.ac.ucl.car_rent_system.module.car;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractCar implements Car {
 	
 	private RegistrationNum registrationNum;
 	
-	private boolean canDrive;
-	
 	private boolean isRent = false;
 	
 	private int tankCapacity;
 	
 	private int fuel = 0;
+	
+	private String carType;
 		
+	public String getCarType() {
+		return carType;
+	}
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
 	@Override
 	public RegistrationNum getRegistrationNum() {
 		// TODO Auto-generated method stub
@@ -32,16 +42,6 @@ public abstract class AbstractCar implements Car {
 		// TODO Auto-generated method stub
 		return this.fuel;
 	}
-	
-	
-
-	public boolean isCanDrive() {
-		return canDrive;
-	}
-
-	public void setCanDrive(boolean canDrive) {
-		this.canDrive = canDrive;
-	}
 
 	public void setRegistrationNum(RegistrationNum registrationNum) {
 		this.registrationNum = registrationNum;
@@ -53,6 +53,14 @@ public abstract class AbstractCar implements Car {
 
 	public void setFuel(int fuel) {
 		this.fuel = fuel;
+	}	
+
+	public boolean isRent() {
+		return isRent;
+	}
+
+	public void setRent(boolean isRent) {
+		this.isRent = isRent;
 	}
 
 	@Override
@@ -67,15 +75,15 @@ public abstract class AbstractCar implements Car {
 	}
 
 	@Override
-	public int addFuel(int fuel) {
+	public int addFuel(int litre) {
 		// TODO Auto-generated method stub
-		if (fuel < 0) {
-			fuel = 0;
+		if (litre < 0) {
+			litre = 0;
 		}
 		
 		int curFuel = this.fuel;
 		
-		curFuel = curFuel + fuel;
+		curFuel = curFuel + litre;
 		
 		if (curFuel > this.tankCapacity) {
 			curFuel = this.tankCapacity;
@@ -85,34 +93,30 @@ public abstract class AbstractCar implements Car {
 	}
 
 	 
-	public static Car getInstance(String car){
-		if(car.equals("large")){
+	public static Car getInstance(String type){
+		if(type.equals("large")){
 			return new LargeCar();
-		}else if(car.equals("small")){
+		}else if(type.equals("small")){
 			return new SmallCar();
 		}else{
 			throw new IllegalArgumentException("There are not this type.");
 		}
 	}
 	
-	public static Map<String, Car> getInstances(String car, int num) {
-		Map<String, Car> result = new HashMap();
+	public static List<Car> getInstances(String type, int num) {
+		List<Car> result = new ArrayList<>();
 
 		Car carInstance = null;
-		String rm = "";
-		if (car.equals("large") && num > 0) {
+		
+		if (type.equals("large") && num > 0) {
 			for (int i = 0; i < num; i++) {
 				carInstance = new LargeCar();
-
-				rm = carInstance.getRegistrationNum().toString();
-
-				result.put(rm, carInstance);
+				result.add(carInstance);
 			}
-		} else if (car.equals("small") && num > 0) {
+		} else if (type.equals("small") && num > 0) {
 			for (int i = 0; i < num; i++) {
 				carInstance = new SmallCar();
-				rm = carInstance.getRegistrationNum().toString();
-				result.put(rm, carInstance);
+				result.add(carInstance);
 			}
 		} else {
 			throw new IllegalArgumentException("There are not this type or num < 0.");

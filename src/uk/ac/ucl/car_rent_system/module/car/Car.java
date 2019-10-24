@@ -8,11 +8,15 @@ public interface Car {
 	
 	int getFuel();
 	
+	String getCarType();	
+	
+	void setRent(boolean isRent);
+	
 	boolean fuelFull();
 	
-	int addFuel(int fuel);
+	int addFuel(int litre);
 	
-	int consumeFuel(int km);
+	int driveCar(int kilometer);
 		
 	RegistrationNum createRegistrationNum();
 }

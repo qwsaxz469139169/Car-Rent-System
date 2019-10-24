@@ -3,12 +3,13 @@ package uk.ac.ucl.car_rent_system.module.person;
 import java.util.Date;
 
 import uk.ac.ucl.car_rent_system.module.car.Car;
+import uk.ac.ucl.car_rent_system.tool.SystemTool;
 
 public class Person{
 	
 	private Name name;
 	
-	private Date age;
+	private Date birth;
 	
 	private Car car;
 	
@@ -16,9 +17,9 @@ public class Person{
 	
 	private DrivingLicence drivingLicence;
 	
-	public Person(Name name, Date age) {
+	public Person(Name name, Date birth) {
 		this.name = name;
-		this.age = age;
+		this.birth = birth;
 	}
 
 	public Name getName() {
@@ -29,12 +30,12 @@ public class Person{
 		this.name = name;
 	}
 
-	public Date getAge() {
-		return age;
+	public Date getBirth() {
+		return birth;
 	}
 
-	public void setAge(Date age) {
-		this.age = age;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
 	
 	public Car getCar() {
@@ -60,12 +61,16 @@ public class Person{
 	public void setDrivingLicence(DrivingLicence drivingLicence) {
 		this.drivingLicence = drivingLicence;
 	}
+	
+	public int getAge(){
+		return SystemTool.getYeartoNow(birth);		
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((age == null) ? 0 : age.hashCode());
+		result = prime * result + ((birth == null) ? 0 : birth.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -79,10 +84,10 @@ public class Person{
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		if (age == null) {
-			if (other.age != null)
+		if (birth == null) {
+			if (other.birth != null)
 				return false;
-		} else if (!age.equals(other.age))
+		} else if (!birth.equals(other.birth))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -94,7 +99,7 @@ public class Person{
 
 	@Override
 	public String toString() {
-		return "Person [name=" + name.toString() + ", age=" + age + ", car=" + car.toString() + ", canRent=" + canRent + ", drivingLicence="
+		return "Person [name=" + name.toString() + ", birth=" + birth + ", car=" + car.toString() + ", canRent=" + canRent + ", drivingLicence="
 				+ drivingLicence.toString() + "]";
 	}
 	

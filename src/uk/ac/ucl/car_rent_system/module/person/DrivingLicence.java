@@ -71,7 +71,7 @@ public class DrivingLicence {
         }
 
         String name = holder.getName().toString();
-        Date age = holder.getAge();
+        Date age = holder.getBirth();
         String tempKey = name + SystemTool.getYearString(age);
 
         if(!drivingLicenseMap.containsKey(tempKey))
