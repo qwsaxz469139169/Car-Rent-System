@@ -2,7 +2,7 @@ package uk.ac.ucl.car_rent_system.module.car;
 
 import uk.ac.ucl.car_rent_system.tool.SystemTool;
 
-public class LargeCar extends AbstractCar {	
+public final class LargeCar extends AbstractCar {	
 	
 	public LargeCar(){
 		Initialize();
